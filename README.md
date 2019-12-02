@@ -24,7 +24,7 @@ $ pipenv install --dev --ignore-pipfile
 
 ## Run
 
-### Activate environment
+### Activate the environment
 
 To activate the environment for this project, execute
 
@@ -32,19 +32,22 @@ To activate the environment for this project, execute
 $ pipenv shell
 ```
 
+Check if a _Python_ version >= 3.7 is being returned:
+
+```sh
+$ python --version
+Python 3.7.5
+```
+
 ### Run challenges
 
-Challenges are run from within ```challenges``` folder.
+To run a specific challenge, execute it like this:
 
 ```sh
-$ cd challenges
+$ python challenges/day_01/challenge_01.py
 ```
 
-To run a specific challenge, execute
-
-```sh
-$ python day01
-```
+It will return the result to be submitted to [adventofcode.com](https://adventofcode.com).
 
 ## Run tests
 
