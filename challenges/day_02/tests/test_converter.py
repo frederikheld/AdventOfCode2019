@@ -19,5 +19,5 @@ def test_intcode_to_list():
 
 
 def test_list_to_intcode():
-    assert list_to_intcode(['0', '1', '5']) == "0, 1, 5"
-    assert list_to_intcode(['10', '5', '8']) == "10, 5, 8"
+    assert list_to_intcode(['0', '1', '5']) == "0,1,5"
+    assert list_to_intcode(['10', '5', '8']) == "10,5,8"
