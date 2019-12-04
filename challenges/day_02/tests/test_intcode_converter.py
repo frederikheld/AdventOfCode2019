@@ -1,6 +1,6 @@
 import pytest
 
-from ..lib.intcode_converter import *
+from challenges.day_02.lib.intcode_converter import *
 
 
 def test_intcode_to_list():
