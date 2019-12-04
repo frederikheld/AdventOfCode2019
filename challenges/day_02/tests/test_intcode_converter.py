@@ -1,6 +1,6 @@
 import pytest
 
-from ..lib.converter import *
+from ..lib.intcode_converter import *
 
 
 def test_intcode_to_list():

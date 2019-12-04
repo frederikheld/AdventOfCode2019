@@ -1,7 +1,7 @@
 import os
 
-from ..lib.converter import intcode_to_list
-from ..lib.converter import list_to_intcode
+from ..lib.intcode_converter import intcode_to_list
+from ..lib.intcode_converter import list_to_intcode
 from ..lib.intcode_processor import process_intcode
 
 
