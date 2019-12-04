@@ -1,6 +1,6 @@
 import pytest
 
-from ..lib.intcode_processor import *
+from challenges.day_02.lib.intcode_processor import *
 
 
 def test_process():
