@@ -1,6 +1,6 @@
 import pytest
 
-from ..lib.processor import *
+from ..lib.intcode_processor import *
 
 
 def test_process():

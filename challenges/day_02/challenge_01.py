@@ -2,13 +2,13 @@ import os
 
 from lib.converter import intcode_to_list
 from lib.converter import list_to_intcode
-from lib.processor import process_intcode
+from lib.intcode_processor import process_intcode
 
 
 def day_02_challenge_01():
     f = open(
         os.path.dirname(os.path.realpath(__file__)) +
-        '/input/challenge_01.txt', 'r'
+        '/input/challenge_01_02.txt', 'r'
     )
     intcode_raw = f.read()
     intcode = intcode_to_list(intcode_raw)
