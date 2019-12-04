@@ -1,8 +1,8 @@
 import os
 
-from lib.converter import intcode_to_list
-from lib.converter import list_to_intcode
-from lib.intcode_processor import process_intcode
+from challenges.day_02.lib.intcode_converter import intcode_to_list
+from challenges.day_02.lib.intcode_converter import list_to_intcode
+from challenges.day_02.lib.intcode_processor import process_intcode
 
 
 def day_02_challenge_01():
