@@ -39,7 +39,15 @@ $ python --version
 Python 3.7.5
 ```
 
-### Run challenges
+### Run all challenges
+
+You can run all challenges by executing
+
+```sh
+$ python main.py
+```
+
+### Run a specific challenge
 
 To run a specific challenge, execute it like this:
 
