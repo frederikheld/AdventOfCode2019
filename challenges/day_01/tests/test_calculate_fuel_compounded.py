@@ -1,6 +1,7 @@
 import pytest
-from ..lib.calculate_fuel import *
-from ..lib.calculate_fuel_compounded import *
+
+from challenges.day_01.lib.calculate_fuel import *
+from challenges.day_01.lib.calculate_fuel_compounded import *
 
 
 def test_calculate_fuel_from_mass_compounded():
