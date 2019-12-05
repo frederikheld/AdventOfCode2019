@@ -9,17 +9,17 @@ def solve_intcode(intcode, expected_output):
 
     intcode = intcode_to_list(intcode)
 
-    for noun in range(0, 100):
-        for verb in range(0, 100):
-            current_intcode = intcode
-            current_intcode[1] = noun
-            current_intcode[2] = verb
-            current_intcode = list_to_intcode(intcode)
+    for verb in range(0, 100):
+        for noun in range(0, 100):
 
-            # print(current_intcode)
-            output = process_intcode(current_intcode)
+            memory = intcode
 
-            if output == expected_output:
+            memory[1] = noun
+            memory[2] = verb
+
+            output = process_intcode(list_to_intcode(memory))
+
+            if intcode_to_list(output)[0] == expected_output:
                 return 100 * noun + verb
 
     return None
