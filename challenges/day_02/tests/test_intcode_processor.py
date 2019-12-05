@@ -3,7 +3,7 @@ import pytest
 from challenges.day_02.lib.intcode_processor import process_intcode
 
 
-def test_process():
+def test_intcode_processor():
     assert process_intcode(
         "1,9,10,3,2,3,11,0,99,30,40,50") == "3500,9,10,70,2,3,11,0,99,30,40,50"
     assert process_intcode("1,0,0,0,99") == "2,0,0,0,99"
