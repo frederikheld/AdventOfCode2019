@@ -9,4 +9,4 @@ def test_actual_challenge_day_01_challenge_01():
 
 
 def test_actual_challenge_day_01_challenge_02():
-    assert day_02_challenge_02() == [12, 5, 6, 17]
+    assert day_02_challenge_02() == 9074
