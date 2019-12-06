@@ -8,32 +8,54 @@ def get_distance_of_closest_intersection(circuit_diagram):
         cables.append(cable.replace(" ", "").split(","))
 
     # get dimensions of circuit:
-    print(get_circuit_dimensions(cables))
+    circuit_dimensions = get_circuit_dimensions(cables)
 
-    # circuit = []
-    # pos_x = 0
-    # pos_y = 0
-
-    # for cable in cables:
-    #     for command in cable:
-    #         direction = command[0]
-    #         distance = command[1:]
-    #         print(direction + " -> " + distance)
-    #         if direction == "R":
-    #             for x in range(pos_x, pos_x + distance):
-    #                 try:
-    #                     circuit(x, pos_y)
-    #                 except IndexError:
-    #                     circuit[x].append(1)
-
-    # elif command[0] == "D":
-    #     print("D")
-    # elif command[0] == "L":
-    #     print("L")
-    # elif command[0] == "U":
-    #     print("U")
+    # initialize circuit board:
+    circuit = [[0 for j in range(circuit_dimensions['min_y'], circuit_dimensions['max_y'])]
+               for i in range(circuit_dimensions['min_x'], circuit_dimensions['max_x'])]
 
     # print(circuit)
+    # print(circuit_dimensions)
+
+    for cable in cables:
+        pos_x = 1
+        pos_y = 1
+        for command in cable:
+            direction = command[0]
+            distance = int(command[1:])
+            # print(direction + " -> " + str(distance))
+            if direction == "R":
+                for x in range(pos_x, pos_x + distance):
+                    circuit[x][pos_y] += 1
+                pos_x += distance
+
+            elif command[0] == "L":
+                for x in range(pos_x, pos_x - distance):
+                    circuit[x][pos_y] -= 1
+                pos_x -= distance
+
+            if direction == "U":
+                for y in range(pos_y, pos_y + distance):
+                    circuit[pos_x][y] += 1
+                pos_y += distance
+
+            elif command[0] == "D":
+                for y in range(pos_y, pos_y - distance):
+                    circuit[pos_x][y] -= 1
+                pos_y -= distance
+
+    # intersections = get_intersections(circuit)
+    # print(intersections)
+
+
+def get_intersections(circuit):
+    result = []
+    for x in range(len(circuit)):
+        for y in range(len(circuit[0])):
+            if (circuit[x][y] == 2):
+                result.append([x, y])
+
+    return result
 
 
 def get_circuit_dimensions(cables):
