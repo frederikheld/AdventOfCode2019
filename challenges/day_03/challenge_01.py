@@ -1,9 +1,9 @@
 import os
 
 if __name__ == "__main__":
-    from lib.fix_circuit import get_distance_of_closest_intersection
+    from lib.circuit_fixer import CircuitFixer
 else:
-    from challenges.day_03.lib.fix_circuit import get_distance_of_closest_intersection
+    from challenges.day_03.lib.circuit_fixer import CircuitFixer
 
 
 def day_03_challenge_01():
@@ -12,7 +12,13 @@ def day_03_challenge_01():
         '/input/challenge_01.txt', 'r'
     )
 
-    return get_distance_of_closest_intersection(f.read())
+    circuit = f.read()
+
+    circuit_fixer = CircuitFixer(circuit)
+
+    distance = circuit_fixer.getDistanceOfClosestIntersection()
+
+    return distance
 
 
 if __name__ == "__main__":

@@ -3,21 +3,21 @@ import pytest
 from challenges.day_03.lib.fix_circuit import *
 
 
-# def test_get_distance_of_closest_intersection():
+def test_get_distance_of_closest_intersection():
 
-#     circuit_1 = """ \
-# R3, U2
-# U1, R5
-# """
+    circuit_1 = """ \
+R3, U2
+U1, R5
+"""
 
-#     """
-#     ....|..
-#     .+--x--
-#     .0--+..
-#     .......
-#     """
+    """
+    ....|..
+    .+--x--
+    .0--+..
+    .......
+    """
 
-#     assert get_distance_of_closest_intersection(circuit_1) == 4
+    assert get_distance_of_closest_intersection(circuit_1) == 4
 
 #     circuit_1 = """ \
 # R3, U4, L2

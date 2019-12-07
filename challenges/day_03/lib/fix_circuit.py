@@ -1,4 +1,3 @@
-
 def get_distance_of_closest_intersection(circuit_diagram):
     cables_raw = circuit_diagram.splitlines()
 
@@ -14,17 +13,18 @@ def get_distance_of_closest_intersection(circuit_diagram):
     circuit = [[0 for j in range(circuit_dimensions['min_y'], circuit_dimensions['max_y'])]
                for i in range(circuit_dimensions['min_x'], circuit_dimensions['max_x'])]
 
-    # print(circuit)
-    # print(circuit_dimensions)
-
     for cable in cables:
+        print("cable: " + str(cable))
         pos_x = 1
         pos_y = 1
         for command in cable:
             direction = command[0]
             distance = int(command[1:])
-            # print(direction + " -> " + str(distance))
+
+            print("command: " + direction + " -> " + str(distance))
+
             if direction == "R":
+                print(str(pos_x) + " : " + str(pos_x + distance))
                 for x in range(pos_x, pos_x + distance):
                     circuit[x][pos_y] += 1
                 pos_x += distance
@@ -44,15 +44,23 @@ def get_distance_of_closest_intersection(circuit_diagram):
                     circuit[pos_x][y] -= 1
                 pos_y -= distance
 
-    # intersections = get_intersections(circuit)
-    # print(intersections)
+            for line in circuit:
+                print(line)
+            print("\n")
+
+    for line in circuit:
+        print(line)
+
+    intersections = get_intersections(circuit)
+
+    print(intersections)
 
 
 def get_intersections(circuit):
     result = []
     for x in range(len(circuit)):
         for y in range(len(circuit[0])):
-            if (circuit[x][y] == 2):
+            if (circuit[x][y] > 1):
                 result.append([x, y])
 
     return result
