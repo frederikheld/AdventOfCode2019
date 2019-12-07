@@ -16,9 +16,9 @@ def day_03_challenge_01():
 
     circuit_fixer = CircuitFixer(circuit)
 
-    distance = circuit_fixer.getDistanceOfClosestIntersection()
+    closest_intersection = circuit_fixer.getClosestIntersection()
 
-    return distance
+    return closest_intersection[1]
 
 
 if __name__ == "__main__":

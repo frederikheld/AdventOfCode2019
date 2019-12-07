@@ -4,12 +4,12 @@ Prepare different representations of circuit_1.
 ciruit_1 contains only movements in positive directions (right and up).
 """
 
-#     """
-#     ....|..
-#     .+--x--
-#     .0--+..
-#     .......
-#     """
+"""
+....|..
+.+--x--
+.o--+..
+.......
+"""
 
 circuit_1 = {}
 
