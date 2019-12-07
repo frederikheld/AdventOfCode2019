@@ -94,12 +94,8 @@ class CircuitFixer:
         """
 
         # initialize circuit board:
-
-        circuit = [[0 for j in range(self.circuit_dimensions['min_x'], self.circuit_dimensions['max_x'] + 1)]
-                   for i in range(self.circuit_dimensions['min_y'], self.circuit_dimensions['max_y'] + 1)]
-
-        for line in circuit:
-            print(line)
+        circuit_board = [[0 for j in range(self.circuit_dimensions['min_x'], self.circuit_dimensions['max_x'] + 1)]
+                         for i in range(self.circuit_dimensions['min_y'], self.circuit_dimensions['max_y'] + 1)]
 
         # calculate occupancies:
         for cable in self.cables:
@@ -109,63 +105,28 @@ class CircuitFixer:
             for command in cable:
                 direction = command[0]
                 distance = int(command[1:])
-                print(direction + " --> " + str(distance))
 
                 if direction == 'R':
                     for x in range(pointer_x + 1, pointer_x + distance + 1):
-                        circuit[pointer_y][x] += 1
+                        circuit_board[pointer_y][x] += 1
                     pointer_x += distance
 
                 elif direction == 'L':
-                    print('L')
+                    for x in range(pointer_x - distance, pointer_x):
+                        circuit_board[pointer_y][x] += 1
+                    pointer_x -= distance
 
                 elif direction == 'U':
                     for y in range(pointer_y + 1, pointer_y + distance + 1):
-                        circuit[y][pointer_x] += 1
+                        circuit_board[y][pointer_x] += 1
                     pointer_y += distance
 
                 elif direction == 'D':
-                    print('D')
+                    for y in range(pointer_y - distance, pointer_y):
+                        circuit_board[y][pointer_x] += 1
+                    pointer_y -= distance
 
-        # for cable in self.cables:
-        #     # print("cable: " + str(cable))
-        #     pos_x = 1
-        #     pos_y = 1
-        #     for command in cable:
-        #         direction = command[0]
-        #         distance = int(command[1:])
-
-        #         # print("command: " + direction + " -> " + str(distance))
-
-        #         if direction == "R":
-        #             # print(str(pos_x) + " : " + str(pos_x + distance))
-        #             for x in range(pos_x, pos_x + distance):
-        #                 circuit[x][pos_y] += 1
-        #             pos_x += distance
-
-        #         elif command[0] == "L":
-        #             for x in range(pos_x, pos_x - distance):
-        #                 circuit[x][pos_y] -= 1
-        #             pos_x -= distance
-
-        #         if direction == "U":
-        #             for y in range(pos_y, pos_y + distance):
-        #                 circuit[pos_x][y] += 1
-        #             pos_y += distance
-
-        #         elif command[0] == "D":
-        #             for y in range(pos_y, pos_y - distance):
-        #                 circuit[pos_x][y] -= 1
-        #             pos_y -= distance
-
-        return circuit
-
-    # def initializeCircuitBoard(self):
-
-    #     circuit = [[0 for j in range(circuit_dimensions['min_y'], circuit_dimensions['max_y'])]
-    #            for i in range(circuit_dimensions['min_x'], circuit_dimensions['max_x'])]
-
-    #     self.circuit_board = result
+        return circuit_board
 
     def getDistanceOfClosestIntersection(self):
         return 42
