@@ -6,11 +6,11 @@ class CircuitFixer:
 
         # init representations of this circuit:
         self.cables = self.initCables()
-        self.circuit_dimensions = self.initCircuitDimensions()
+        self.dimensions = self.initDimensions()
         self.occupancy_map = self.initOccupancyMap()
 
     """
-    Getters
+    Simple Getters
     """
 
     def getCircuit(self):
@@ -19,11 +19,32 @@ class CircuitFixer:
     def getCables(self):
         return self.cables
 
-    def getCircuitDimensions(self):
-        return self.circuit_dimensions
+    def getDimensions(self):
+        return self.dimensions
 
     def getOccupancyMap(self):
         return self.occupancy_map
+
+    """
+    Advanced Getters
+    """
+
+    def getIntersections(self):
+        intersections = []
+
+        y = 0
+        for line in self.occupancy_map:
+            x = 0
+            for field in line:
+                if field > 1:
+                    intersections.append([x, y])
+                x += 1
+            y += 1
+
+        return intersections
+
+    def getDistanceOfClosestIntersection(self):
+        return 42
 
     """
     Functions that calculate different representations of the
@@ -45,7 +66,7 @@ class CircuitFixer:
 
         return cables
 
-    def initCircuitDimensions(self):
+    def initDimensions(self):
         """
         Extracts the dimensions of the circuit.
         Returns an array of min/max values on x/y axis.
@@ -94,8 +115,8 @@ class CircuitFixer:
         """
 
         # initialize circuit board:
-        circuit_board = [[0 for j in range(self.circuit_dimensions['min_x'], self.circuit_dimensions['max_x'] + 1)]
-                         for i in range(self.circuit_dimensions['min_y'], self.circuit_dimensions['max_y'] + 1)]
+        circuit_board = [[0 for j in range(self.dimensions['min_x'], self.dimensions['max_x'] + 1)]
+                         for i in range(self.dimensions['min_y'], self.dimensions['max_y'] + 1)]
 
         # calculate occupancies:
         for cable in self.cables:
@@ -127,6 +148,3 @@ class CircuitFixer:
                     pointer_y -= distance
 
         return circuit_board
-
-    def getDistanceOfClosestIntersection(self):
-        return 42
