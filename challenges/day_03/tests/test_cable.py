@@ -32,3 +32,11 @@ def test_init_list():
 
     cf2 = Cable(cable_2['code'])
     assert cf2.initList() == cable_2['list']
+
+
+def test_init_sections():
+    cf1 = Cable(cable_1['code'], cable_1['start'])
+    assert cf1.initSections() == cable_1['sections']
+
+    cf2 = Cable(cable_2['code'], cable_2['start'])
+    assert cf2.initSections() == cable_2['sections']
