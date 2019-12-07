@@ -5,6 +5,11 @@ if __name__ == "__main__":
 else:
     from challenges.day_03.lib.circuit_fixer import CircuitFixer
 
+"""
+I'm going to abandon this approach because it's incapable of dealing with negative coordinates,
+it's insanely slow and it needs a lot of memory.
+"""
+
 
 def day_03_challenge_01():
     f = open(
