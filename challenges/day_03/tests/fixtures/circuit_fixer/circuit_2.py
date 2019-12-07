@@ -47,3 +47,8 @@ circuit_2['intersections'] = [
     [4, 2],
     [1, 3]
 ]
+
+circuit_2['closest_intersection'] = [
+    [1, 3],
+    2
+]

@@ -1,3 +1,5 @@
+from . import math_distance
+
 
 class CircuitFixer:
 
@@ -43,8 +45,23 @@ class CircuitFixer:
 
         return intersections
 
-    def getDistanceOfClosestIntersection(self):
-        return 42
+    def getClosestIntersection(self):
+        closest_intersection = None
+        lowest_distance = None
+
+        for intersection in self.getIntersections():
+
+            calculated_distance = math_distance.calculate_manhattan_distance(
+                [1, 1], intersection)
+
+            if lowest_distance == None or calculated_distance < lowest_distance:
+                lowest_distance = calculated_distance
+                closest_intersection = [
+                    intersection,
+                    calculated_distance
+                ]
+
+        return closest_intersection
 
     """
     Functions that calculate different representations of the

@@ -42,3 +42,8 @@ circuit_1['occupancy_map'] = [
 circuit_1['intersections'] = [
     [4, 2]
 ]
+
+circuit_1['closest_intersection'] = [
+    [4, 2],
+    4
+]
