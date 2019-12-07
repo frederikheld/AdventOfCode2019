@@ -13,7 +13,17 @@ def test_object_instantiation():
     cf1 = CircuitBoard(circuit_1['raw'])
     assert isinstance(cf1, CircuitBoard)
     assert cf1.getCircuit() == circuit_1['raw']
+    assert cf1.getCables() == circuit_1['cables']
 
     cf2 = CircuitBoard(circuit_2['raw'])
     assert isinstance(cf2, CircuitBoard)
     assert cf2.getCircuit() == circuit_2['raw']
+    assert cf2.getCables() == circuit_2['cables']
+
+
+def test_init_cables():
+    cf1 = CircuitBoard(circuit_1['raw'])
+    assert cf1.initCables() == circuit_1['cables']
+
+    cf2 = CircuitBoard(circuit_2['raw'])
+    assert cf2.initCables() == circuit_2['cables']
