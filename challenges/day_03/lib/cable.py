@@ -1,6 +1,7 @@
 class Cable:
-    def __init__(self, cable):
+    def __init__(self, cable, start=[0, 0]):
         self.code = cable
+        self.start = start
 
         # init representations of this cable:
 
@@ -12,6 +13,9 @@ class Cable:
 
     def getCode(self):
         return self.code
+
+    def getStart(self):
+        return self.start
 
     def getList(self):
         return self.list
