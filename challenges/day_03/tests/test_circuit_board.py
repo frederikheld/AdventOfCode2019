@@ -2,28 +2,44 @@ import pytest
 
 # import object under test:
 from challenges.day_03.lib.circuit_board import *
+from challenges.day_03.lib.cable import *
 
 # import test fixtures:
 from challenges.day_03.tests.fixtures.circuit_board.circuit_1 import circuit_1
 from challenges.day_03.tests.fixtures.circuit_board.circuit_2 import circuit_2
+from challenges.day_03.tests.fixtures.circuit_board.circuit_3 import circuit_3
 from challenges.day_03.tests.fixtures.circuit_board.circuit_aoc_1 import circuit_aoc_1
 
 
 def test_object_instantiation():
     cf1 = CircuitBoard(circuit_1['raw'])
     assert isinstance(cf1, CircuitBoard)
-    assert cf1.getCircuit() == circuit_1['raw']
-    assert cf1.getCables() == circuit_1['cables']
+    assert cf1.getCode() == circuit_1['raw']
+    # assert cf1.getCables() == circuit_1['cables']
 
     cf2 = CircuitBoard(circuit_2['raw'])
     assert isinstance(cf2, CircuitBoard)
-    assert cf2.getCircuit() == circuit_2['raw']
-    assert cf2.getCables() == circuit_2['cables']
+    assert cf2.getCode() == circuit_2['raw']
+    # assert cf2.getCables() == circuit_2['cables']
 
 
 def test_init_cables():
+
     cf1 = CircuitBoard(circuit_1['raw'])
-    assert cf1.initCables() == circuit_1['cables']
+    cables1 = cf1.initCables()
+    assert isinstance(cables1, list)
+    assert len(cables1) == 2
+    assert isinstance(cables1[0], Cable)
+    assert isinstance(cables1[1], Cable)
 
     cf2 = CircuitBoard(circuit_2['raw'])
-    assert cf2.initCables() == circuit_2['cables']
+    cables2 = cf2.initCables()
+    assert isinstance(cables2, list)
+    assert len(cables2) == 2
+    assert isinstance(cables2[0], Cable)
+    assert isinstance(cables2[1], Cable)
+
+    cf3 = CircuitBoard(circuit_3['raw'])
+    cables3 = cf3.initCables()
+    assert isinstance(cables3, list)
+    assert len(cables3) == 3

@@ -1,7 +1,10 @@
+from .cable import Cable
+
+
 class CircuitBoard:
 
     def __init__(self, circuit):
-        self.circuit = circuit
+        self.code = circuit
 
         self.cables = self.initCables()
 
@@ -9,8 +12,8 @@ class CircuitBoard:
     Basic Getters
     """
 
-    def getCircuit(self):
-        return self.circuit
+    def getCode(self):
+        return self.code
 
     def getCables(self):
         return self.cables
@@ -28,9 +31,7 @@ class CircuitBoard:
 
         cables = []
 
-        cables_raw = self.circuit.splitlines()
-
-        for cable in cables_raw:
-            cables.append(cable.replace(" ", "").split(","))
+        for cable in self.code.splitlines():
+            cables.append(Cable(cable))
 
         return cables
