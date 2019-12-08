@@ -1,11 +1,14 @@
+from .math_geometry import intersect
+
+
 class Cable:
     def __init__(self, cable, start=[0, 0]):
         self.code = cable
         self.start = start
 
         # init representations of this cable:
-
         self.list = self.initList()
+        self.sections = self.initSections()
 
     """
     Simple Getters
@@ -20,13 +23,16 @@ class Cable:
     def getList(self):
         return self.list
 
+    def getSections(self):
+        return self.sections
+
     """
     Advanced Getters
     """
 
     """
     Functions that calculate different representations
-    of the cable from its code.
+    of the cable from its code on on initialization.
     """
 
     def initList(self):
@@ -60,8 +66,23 @@ class Cable:
 
             section.append([pointer_x, pointer_y])
 
-            print(section)
-
             sections.append(section)
 
         return sections
+
+    """
+    The real shit
+    """
+
+    def intersect(self, other_cable):
+        intersections = []
+        for section in self.sections:
+            for other_section in other_cable.getSections():
+                intersection = intersect(section, other_section)
+                if intersection:
+                    intersections.append(intersection)
+
+        if len(intersections) > 0:
+            return intersections
+
+        return None

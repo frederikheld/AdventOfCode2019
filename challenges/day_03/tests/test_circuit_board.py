@@ -15,16 +15,13 @@ def test_object_instantiation():
     cf1 = CircuitBoard(circuit_1['raw'])
     assert isinstance(cf1, CircuitBoard)
     assert cf1.getCode() == circuit_1['raw']
-    # assert cf1.getCables() == circuit_1['cables']
 
     cf2 = CircuitBoard(circuit_2['raw'])
     assert isinstance(cf2, CircuitBoard)
     assert cf2.getCode() == circuit_2['raw']
-    # assert cf2.getCables() == circuit_2['cables']
 
 
 def test_init_cables():
-
     cf1 = CircuitBoard(circuit_1['raw'])
     cables1 = cf1.initCables()
     assert isinstance(cables1, list)
@@ -43,3 +40,8 @@ def test_init_cables():
     cables3 = cf3.initCables()
     assert isinstance(cables3, list)
     assert len(cables3) == 3
+
+
+# def test_get_intersections():
+#     cf1 = CircuitBoard(circuit_1['raw'])
+    # assert cf1.getIntersections() == circuit_1['intersections']

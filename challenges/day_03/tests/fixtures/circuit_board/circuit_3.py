@@ -15,7 +15,7 @@ circuit_3 = {}
 
 circuit_3['raw'] = """ \
 R3, U2
-U1, R5,
+U1, R5
 D1, R4
 """
 

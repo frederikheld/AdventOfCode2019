@@ -18,6 +18,11 @@ class CircuitBoard:
     def getCables(self):
         return self.cables
 
+    # def getIntersections(self):
+    #     intersections = []
+    #     for cable in self.cables:
+    #         intersections.append(cable.intersect(self.cables))
+
     """
     Functions that calculate different representations of the
     circuit from the raw circuit
