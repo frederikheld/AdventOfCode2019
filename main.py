@@ -3,11 +3,13 @@ from challenges.day_01.challenge_02 import day_01_challenge_02
 from challenges.day_02.challenge_01 import day_02_challenge_01
 from challenges.day_02.challenge_02 import day_02_challenge_02
 from challenges.day_03.challenge_01 import day_03_challenge_01
+from challenges.day_04.challenge_01 import day_04_challenge_01
 
 challenges = [
     [day_01_challenge_01, day_01_challenge_02],
     [day_02_challenge_01, day_02_challenge_02],
-    [day_03_challenge_01]
+    [day_03_challenge_01],
+    [day_04_challenge_01]
 ]
 
 if __name__ == "__main__":
