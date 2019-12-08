@@ -12,29 +12,38 @@ from challenges.day_03.tests.fixtures.circuit_board.circuit_aoc_1 import circuit
 
 
 def test_object_instantiation():
-    cf1 = CircuitBoard(circuit_1['raw'])
+    cf1 = CircuitBoard(circuit_1['raw'], circuit_1['start'])
     assert isinstance(cf1, CircuitBoard)
     assert cf1.getCode() == circuit_1['raw']
+    assert cf1.getStart() == circuit_1['start']
 
-    cf2 = CircuitBoard(circuit_2['raw'])
+    cf2 = CircuitBoard(circuit_2['raw'], circuit_2['start'])
     assert isinstance(cf2, CircuitBoard)
     assert cf2.getCode() == circuit_2['raw']
+    assert cf2.getStart() == circuit_2['start']
+
+
+def test_start_default():
+    cf1 = CircuitBoard(circuit_1['raw'])
+    assert cf1.getStart() == [1, 1]
 
 
 def test_init_cables():
-    cf1 = CircuitBoard(circuit_1['raw'])
+    cf1 = CircuitBoard(circuit_1['raw'], circuit_1['start'])
     cables1 = cf1.initCables()
     assert isinstance(cables1, list)
     assert len(cables1) == 2
     assert isinstance(cables1[0], Cable)
     assert isinstance(cables1[1], Cable)
+    assert cables1[0].getStart() == circuit_1['start']
 
-    cf2 = CircuitBoard(circuit_2['raw'])
+    cf2 = CircuitBoard(circuit_2['raw'], circuit_2['start'])
     cables2 = cf2.initCables()
     assert isinstance(cables2, list)
     assert len(cables2) == 2
     assert isinstance(cables2[0], Cable)
     assert isinstance(cables2[1], Cable)
+    assert cables2[0].getStart() == circuit_2['start']
 
     cf3 = CircuitBoard(circuit_3['raw'])
     cables3 = cf3.initCables()
@@ -42,6 +51,10 @@ def test_init_cables():
     assert len(cables3) == 3
 
 
-# def test_get_intersections():
-#     cf1 = CircuitBoard(circuit_1['raw'])
-    # assert cf1.getIntersections() == circuit_1['intersections']
+def test_get_intersections():
+    cf1 = CircuitBoard(circuit_1['raw'], circuit_1['start'])
+    assert cf1.getIntersections() == circuit_1['intersections']
+
+    cf2 = CircuitBoard(circuit_2['raw'], circuit_2['start'])
+    print(cf2.getIntersections())
+    assert cf2.getIntersections() == circuit_2['intersections']

@@ -1,9 +1,9 @@
-from .math_geometry import intersect
+from .math_geometry import intersect_segments
 
 
 class Cable:
-    def __init__(self, cable, start=[0, 0]):
-        self.code = cable
+    def __init__(self, code, start=[0, 0]):
+        self.code = code
         self.start = start
 
         # init representations of this cable:
@@ -78,7 +78,7 @@ class Cable:
         intersections = []
         for section in self.sections:
             for other_section in other_cable.getSections():
-                intersection = intersect(section, other_section)
+                intersection = intersect_segments(section, other_section)
                 if intersection:
                     intersections.append(intersection)
 

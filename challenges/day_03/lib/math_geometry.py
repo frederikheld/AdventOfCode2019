@@ -1,18 +1,28 @@
-def intersect(segment1, segment2):
+def intersect_segments(segment1, segment2):
+    intersection = intersect_lines(segment1, segment2)
+
+    if intersection:
+        if is_in_segment(segment1, intersection) and is_in_segment(segment2, intersection):
+            return intersection
+
+    return None
+
+
+def intersect_lines(line1, line2):
     """
     Calculates the intersection between two line segments
     that are defined by their start and end point.
     """
 
-    x1 = segment1[0][0]
-    y1 = segment1[0][1]
-    x2 = segment1[1][0]
-    y2 = segment1[1][1]
+    x1 = line1[0][0]
+    y1 = line1[0][1]
+    x2 = line1[1][0]
+    y2 = line1[1][1]
 
-    x3 = segment2[0][0]
-    y3 = segment2[0][1]
-    x4 = segment2[1][0]
-    y4 = segment2[1][1]
+    x3 = line2[0][0]
+    y3 = line2[0][1]
+    x4 = line2[1][0]
+    y4 = line2[1][1]
 
     try:
         xi = ((x1*y2 - y1*x2)*(x3 - x4) - (x1 - x2)*(x3*y4 - y3*x4)) / \

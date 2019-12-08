@@ -18,6 +18,8 @@ R3, U2
 U1, R5
 """
 
+circuit_1['start'] = [1, 1]
+
 circuit_1['intersections'] = [
     [4, 2]
 ]
