@@ -72,3 +72,15 @@ def is_in_segment(segment, point):
         return True
 
     return False
+
+
+def calculate_manhattan_distance(point1, point2):
+    distance_x = point2[0] - point1[0]
+    if point2[0] < point1[0]:
+        distance_x = point1[0] - point2[0]
+
+    distance_y = point2[1] - point1[1]
+    if point2[1] < point1[1]:
+        distance_y = point1[1] - point2[1]
+
+    return abs(distance_x) + abs(distance_y)
