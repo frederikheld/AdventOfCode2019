@@ -1,4 +1,5 @@
 from .cable import Cable
+from . import math_geometry
 
 
 class CircuitBoard:
@@ -22,6 +23,10 @@ class CircuitBoard:
 
     def getCables(self):
         return self.cables
+
+    """
+    Advanced Getters
+    """
 
     def getIntersections(self):
         intersections = []
@@ -49,6 +54,24 @@ class CircuitBoard:
         intersections.remove(self.start)
 
         return intersections
+
+    def getClosestIntersection(self):
+        closest_intersection = None
+        lowest_distance = None
+
+        for intersection in self.getIntersections():
+
+            calculated_distance = math_geometry.calculate_manhattan_distance(
+                self.start, intersection)
+
+            if lowest_distance == None or calculated_distance < lowest_distance:
+                lowest_distance = calculated_distance
+                closest_intersection = [
+                    intersection,
+                    calculated_distance
+                ]
+
+        return closest_intersection
 
     """
     Functions that calculate different representations of the

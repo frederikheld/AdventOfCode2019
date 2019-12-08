@@ -56,5 +56,16 @@ def test_get_intersections():
     assert cf1.getIntersections() == circuit_1['intersections']
 
     cf2 = CircuitBoard(circuit_2['raw'], circuit_2['start'])
-    print(cf2.getIntersections())
     assert cf2.getIntersections() == circuit_2['intersections']
+
+
+def test_get_closest_intersection():
+    cf1 = CircuitBoard(circuit_1['raw'], circuit_1['start'])
+    assert cf1.getClosestIntersection() == circuit_1['closest_intersection']
+
+    cf2 = CircuitBoard(circuit_2['raw'], circuit_2['start'])
+    assert cf2.getClosestIntersection() == circuit_2['closest_intersection']
+
+    cfaoc1 = CircuitBoard(circuit_aoc_1['raw'], circuit_aoc_1['start'])
+    assert cfaoc1.getClosestIntersection(
+    ) == circuit_aoc_1['closest_intersection']
