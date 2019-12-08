@@ -36,3 +36,8 @@ circuit_2['closest_intersection'] = [
     [2, 2],
     2
 ]
+
+circuit_2['closest_intersection_along_cables'] = [
+    [2, 2],
+    10
+]

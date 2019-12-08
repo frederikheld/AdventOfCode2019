@@ -8,6 +8,7 @@ from challenges.day_03.lib.cable import *
 from challenges.day_03.tests.fixtures.circuit_board.circuit_1 import circuit_1
 from challenges.day_03.tests.fixtures.circuit_board.circuit_2 import circuit_2
 from challenges.day_03.tests.fixtures.circuit_board.circuit_3 import circuit_3
+from challenges.day_03.tests.fixtures.circuit_board.circuit_4 import circuit_4
 from challenges.day_03.tests.fixtures.circuit_board.circuit_aoc_1 import circuit_aoc_1
 
 
@@ -69,3 +70,17 @@ def test_get_closest_intersection():
     cfaoc1 = CircuitBoard(circuit_aoc_1['raw'], circuit_aoc_1['start'])
     assert cfaoc1.getClosestIntersection(
     ) == circuit_aoc_1['closest_intersection']
+
+
+# def test_get_closest_intersection_along_cables():
+#     cf1 = CircuitBoard(circuit_1['raw'], circuit_1['start'])
+#     assert cf1.getClosestIntersectionAlongCables(
+#     ) == circuit_1['closest_intersection_along_cables']
+
+    # cf4 = CircuitBoard(circuit_4['raw'], circuit_4['start'])
+    # assert cf4.getClosestIntersectionAlongCables(
+    # ) == circuit_4['closest_intersection_along_cables']
+
+    # cfaoc1 = CircuitBoard(circuit_aoc_1['raw'], circuit_aoc_1['start'])
+    # assert cfaoc1.getClosestIntersectionAlongCables(
+    # ) == circuit_aoc_1['closest_intersection_along_cables']

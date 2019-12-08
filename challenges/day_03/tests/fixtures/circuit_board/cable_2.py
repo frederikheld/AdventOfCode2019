@@ -1,4 +1,8 @@
 """
+cable_2 intersects with cable_2_1 which has a different start.
+"""
+
+"""
 ..+--x--
 ..|..|..
 o-x--+..

@@ -28,3 +28,8 @@ circuit_1['closest_intersection'] = [
     [4, 2],
     4
 ]
+
+circuit_1['closest_intersection_along_cables'] = [
+    [4, 2],
+    8
+]

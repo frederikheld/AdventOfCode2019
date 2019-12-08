@@ -64,17 +64,24 @@ class CircuitBoard:
 
         for intersection in self.getIntersections():
 
-            calculated_distance = math_geometry.calculate_manhattan_distance(
+            calculated_manhattan_distance = math_geometry.calculate_manhattan_distance(
                 self.start, intersection)
 
-            if lowest_distance == None or calculated_distance < lowest_distance:
-                lowest_distance = calculated_distance
+            if lowest_distance == None or calculated_manhattan_distance < lowest_distance:
+                lowest_distance = calculated_manhattan_distance
                 closest_intersection = [
                     intersection,
-                    calculated_distance
+                    calculated_manhattan_distance
                 ]
 
         return closest_intersection
+
+    def getClosestIntersectionAlongCables(self):
+        closest_intersection = None
+        lowest_distance = None
+
+        # for intersection in self.getIntersections():
+        #     calculated_distance_along_cable = math_cable.calculate_distance_along_cable(self.start)
 
     """
     Functions that calculate different representations of the

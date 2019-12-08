@@ -48,6 +48,9 @@ def test_intersect():
     cf1_2 = Cable(cable_1_1['code'], cable_1_1['start'])
     assert cf1_1.intersect(cf1_2) == cable_1['intersections']
 
-    cf2_1 = Cable(cable_2['code'], cable_2['start'])
-    cf2_2 = Cable(cable_2_1['code'], cable_2_1['start'])
-    assert cf2_1.intersect(cf2_2) == cable_2['intersections']
+    # cf2_1 = Cable(cable_2['code'], cable_2['start'])
+    # cf2_2 = Cable(cable_2_1['code'], cable_2_1['start'])
+    # assert cf2_1.intersect(cf2_2) == cable_2['intersections']
+
+
+# def test_intersect_with_distance_along_cable():
