@@ -51,7 +51,10 @@ class CircuitBoard:
         intersections = result
 
         # remove start point:
-        intersections.remove(self.start)
+        try:
+            intersections.remove(self.start)
+        except:
+            None
 
         return intersections
 

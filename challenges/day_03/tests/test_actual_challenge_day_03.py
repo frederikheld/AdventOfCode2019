@@ -5,8 +5,8 @@ from challenges.day_03.challenge_01 import day_03_challenge_01
 
 
 def test_actual_challenge_day_03_challenge_01():
-    assert day_03_challenge_01() == 'foo'
+    assert day_03_challenge_01() == 293
 
 
 # def test_actual_challenge_day_03_challenge_02():
-# assert day_03_challenge_02() == 4970206
+# assert day_03_challenge_02() == 'foo'

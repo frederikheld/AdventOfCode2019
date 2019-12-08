@@ -12,11 +12,11 @@ def day_03_challenge_01():
         '/input/challenge_01.txt', 'r'
     )
 
-    circuit = f.read()
+    cb = CircuitBoard(f.read(), [1, 1])
 
-    # TODO
+    closest_intersection = cb.getClosestIntersection()
 
-    return 'foo'
+    return closest_intersection[1]
 
 
 if __name__ == "__main__":
