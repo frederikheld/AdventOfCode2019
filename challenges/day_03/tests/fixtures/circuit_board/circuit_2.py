@@ -28,11 +28,20 @@ circuit_2['cables'] = [
 ]
 
 circuit_2['intersections'] = [
-    [5, 1],
-    [2, 2]
+    {
+        'coordinates': [5, 1]
+    },
+    {
+        'coordinates': [2, 2]
+    }
 ]
 
 circuit_2['closest_intersection'] = [
     [2, 2],
     2
+]
+
+circuit_2['closest_intersection_along_cables'] = [
+    [2, 2],
+    10
 ]

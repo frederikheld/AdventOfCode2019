@@ -6,7 +6,7 @@ else:
     from challenges.day_03.lib.circuit_board import CircuitBoard
 
 
-def day_03_challenge_01():
+def day_03_challenge_02():
     f = open(
         os.path.dirname(os.path.realpath(__file__)) +
         '/input/challenge_01_02.txt', 'r'
@@ -14,10 +14,10 @@ def day_03_challenge_01():
 
     cb = CircuitBoard(f.read(), [1, 1])
 
-    closest_intersection = cb.getClosestIntersection()
+    closest_to_start_intersection = cb.getClosestIntersectionAlongCables()
 
-    return closest_intersection[1]
+    return closest_to_start_intersection[1]
 
 
 if __name__ == "__main__":
-    print(day_03_challenge_01())
+    print(day_03_challenge_02())

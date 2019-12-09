@@ -1,4 +1,8 @@
 """
+cable_2 intersects with cable_2_1 which has a different start.
+"""
+
+"""
 ..+--x--
 ..|..|..
 o-x--+..
@@ -35,4 +39,9 @@ cable_2_1['start'] = [0, 2]
 cable_2['intersections'] = [
     [2, 2],
     [5, 4]
+]
+
+cable_2['distance_along_cable'] = [
+    1,
+    6
 ]

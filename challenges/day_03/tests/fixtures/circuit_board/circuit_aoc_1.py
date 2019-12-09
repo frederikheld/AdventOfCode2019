@@ -39,3 +39,8 @@ circuit_aoc_1['closest_intersection'] = [
     [4, 4],
     6
 ]
+
+circuit_aoc_1['closest_intersection_along_cables'] = [
+    [7, 6],
+    30
+]

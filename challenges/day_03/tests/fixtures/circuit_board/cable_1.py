@@ -1,6 +1,6 @@
 """
 ...|
-...|
++--x
 o--+
 """
 
@@ -23,11 +23,6 @@ cable_1['sections'] = [
     ]
 ]
 
-"""
-...|
-+--x
-o--+
-"""
 
 cable_1_1 = {}
 
@@ -46,7 +41,13 @@ cable_1_1['sections'] = [
     ]
 ]
 
+
 cable_1['intersections'] = [
     [0, 0],
     [3, 1]
+]
+
+cable_1['distance_along_cable'] = [
+    0,
+    4
 ]

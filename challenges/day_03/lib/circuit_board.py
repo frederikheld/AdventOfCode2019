@@ -38,25 +38,35 @@ class CircuitBoard:
                     cable_intersections = cable.intersect(cable_2)
 
                     if cable_intersections != None:
-                        intersections += cable_intersections
+                        intersection_detailled = []
+                        for intersection in cable_intersections:
+                            intersection_detailled.append({
+                                'coordinates': intersection,
+                                'cable_1': cable,
+                                'cable_2': cable_2
+                            })
+                        intersections += intersection_detailled
         # TODO: This can be done more efficiently with drawing without placing back.
         #       Right now all intersections are calculate twice because both cables
         #       are run through the algorithm.
+        #       This would also make removing duplicates (see belwo) unnecessary.
 
-        # remove duplicates:
         result = []
-        for point in intersections:
-            if point not in result:
-                result.append(point)
-        intersections = result
+        temp_intersections = []
+        for intersection in intersections:
 
-        # remove start point:
-        try:
-            intersections.remove(self.start)
-        except:
-            None
+            # ignore start point:
+            if intersection['coordinates'] == self.start:
+                continue
 
-        return intersections
+            # ignore duplicates:
+            if intersection['coordinates'] in temp_intersections:
+                continue
+
+            result.append(intersection)
+            temp_intersections.append(intersection['coordinates'])
+
+        return result
 
     def getClosestIntersection(self):
         closest_intersection = None
@@ -64,14 +74,32 @@ class CircuitBoard:
 
         for intersection in self.getIntersections():
 
-            calculated_distance = math_geometry.calculate_manhattan_distance(
-                self.start, intersection)
+            calculated_manhattan_distance = math_geometry.calculate_manhattan_distance(
+                self.start, intersection['coordinates'])
 
-            if lowest_distance == None or calculated_distance < lowest_distance:
-                lowest_distance = calculated_distance
+            if lowest_distance == None or calculated_manhattan_distance < lowest_distance:
+                lowest_distance = calculated_manhattan_distance
                 closest_intersection = [
-                    intersection,
-                    calculated_distance
+                    intersection['coordinates'],
+                    calculated_manhattan_distance
+                ]
+
+        return closest_intersection
+
+    def getClosestIntersectionAlongCables(self):
+        closest_intersection = None
+        lowest_distance = None
+
+        for intersection in self.getIntersections():
+
+            calculated_distance_along_cables = intersection['cable_1'].getDistanceAlongCable(
+                intersection['coordinates']) + intersection['cable_2'].getDistanceAlongCable(intersection['coordinates'])
+
+            if lowest_distance == None or calculated_distance_along_cables < lowest_distance:
+                lowest_distance = calculated_distance_along_cables
+                closest_intersection = [
+                    intersection['coordinates'],
+                    calculated_distance_along_cables
                 ]
 
         return closest_intersection

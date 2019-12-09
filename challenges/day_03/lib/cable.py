@@ -74,6 +74,55 @@ class Cable:
     The real shit
     """
 
+    def getDistanceAlongCable(self, point):
+        """
+        Returns distance along cable from start to the given point.
+        Returns None if point is not on cable.
+        """
+
+        pointer_x = self.start[0]
+        pointer_y = self.start[1]
+
+        distance_along_cable = 0
+
+        # edge case: self.start == point:
+        if [pointer_x, pointer_y] == point:
+            return distance_along_cable
+
+        for command in self.list:
+            direction = command[0]
+            distance = int(command[1:])
+
+            if direction == 'R':
+                for x in range(distance):
+                    pointer_x += 1
+                    distance_along_cable += 1
+                    if [pointer_x, pointer_y] == point:
+                        return distance_along_cable
+
+            elif direction == 'L':
+                for x in range(distance):
+                    pointer_x -= 1
+                    distance_along_cable += 1
+                    if [pointer_x, pointer_y] == point:
+                        return distance_along_cable
+
+            elif direction == 'U':
+                for y in range(distance):
+                    pointer_y += 1
+                    distance_along_cable += 1
+                    if [pointer_x, pointer_y] == point:
+                        return distance_along_cable
+
+            elif direction == 'D':
+                for y in range(distance):
+                    pointer_y -= 1
+                    distance_along_cable += 1
+                    if [pointer_x, pointer_y] == point:
+                        return distance_along_cable
+
+        return None
+
     def intersect(self, other_cable):
         intersections = []
         for section in self.sections:
