@@ -9,7 +9,7 @@ else:
 def day_03_challenge_02():
     f = open(
         os.path.dirname(os.path.realpath(__file__)) +
-        '/input/challenge_01.txt', 'r'
+        '/input/challenge_01_02.txt', 'r'
     )
 
     cb = CircuitBoard(f.read(), [1, 1])
