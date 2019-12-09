@@ -14,7 +14,7 @@ def day_03_challenge_02():
 
     cb = CircuitBoard(f.read(), [1, 1])
 
-    closest_to_start_intersection = cb.getClosestToStartIntersection()
+    closest_to_start_intersection = cb.getClosestIntersectionAlongCables()
 
     return closest_to_start_intersection[1]
 

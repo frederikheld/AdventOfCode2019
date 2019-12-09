@@ -9,6 +9,7 @@ from challenges.day_03.tests.fixtures.circuit_board.circuit_1 import circuit_1
 from challenges.day_03.tests.fixtures.circuit_board.circuit_2 import circuit_2
 from challenges.day_03.tests.fixtures.circuit_board.circuit_3 import circuit_3
 from challenges.day_03.tests.fixtures.circuit_board.circuit_4 import circuit_4
+from challenges.day_03.tests.fixtures.circuit_board.circuit_5 import circuit_5
 from challenges.day_03.tests.fixtures.circuit_board.circuit_aoc_1 import circuit_aoc_1
 
 
@@ -54,10 +55,31 @@ def test_init_cables():
 
 def test_get_intersections():
     cf1 = CircuitBoard(circuit_1['raw'], circuit_1['start'])
-    assert cf1.getIntersections() == circuit_1['intersections']
+    cf1_intersections = cf1.getIntersections()
 
-    cf2 = CircuitBoard(circuit_2['raw'], circuit_2['start'])
-    assert cf2.getIntersections() == circuit_2['intersections']
+    assert len(cf1_intersections) == 1
+    assert cf1_intersections[0]['coordinates'] == circuit_1['intersections'][0]['coordinates']
+
+    assert cf1_intersections[0]['cable_1'].getList() == cf1.getCables()[
+        0].getList()
+    assert cf1_intersections[0]['cable_2'].getList() == cf1.getCables()[
+        1].getList()
+
+    cf5 = CircuitBoard(circuit_5['raw'], circuit_5['start'])
+    cf5_intersections = cf5.getIntersections()
+
+    assert len(cf5_intersections) == 2
+    assert cf5_intersections[0]['coordinates'] == circuit_5['intersections'][0]['coordinates']
+    assert cf5_intersections[0]['cable_1'].getList() == cf5.getCables()[
+        0].getList()
+    assert cf5_intersections[0]['cable_2'].getList() == cf5.getCables()[
+        1].getList()
+
+    assert cf5_intersections[1]['coordinates'] == circuit_5['intersections'][1]['coordinates']
+    assert cf5_intersections[1]['cable_1'].getList() == cf5.getCables()[
+        1].getList()
+    assert cf5_intersections[1]['cable_2'].getList() == cf5.getCables()[
+        2].getList()
 
 
 def test_get_closest_intersection():
