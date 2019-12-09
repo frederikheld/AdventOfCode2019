@@ -32,7 +32,8 @@ circuit_2['intersections'] = [
         'coordinates': [5, 1]
     },
     {
-        'coordinates': [2, 2]}
+        'coordinates': [2, 2]
+    }
 ]
 
 circuit_2['closest_intersection'] = [

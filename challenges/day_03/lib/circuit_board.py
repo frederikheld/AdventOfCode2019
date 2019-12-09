@@ -86,12 +86,13 @@ class CircuitBoard:
 
         return closest_intersection
 
-    def getClosestIntersectionAlongCables(self):
-        closest_intersection = None
-        lowest_distance = None
+    # def getClosestIntersectionAlongCables(self):
+    #     closest_intersection = None
+    #     lowest_distance = None
 
-        # for intersection in self.getIntersections():
-        #     print
+    #     for intersection in self.getIntersections():
+    #         print(intersection['coordinates'])
+    #         print(intersection['cable_1'].getList())
 
         # for intersection in self.getIntersections():
         #     calculated_distance_along_cable = math_cable.calculate_distance_along_cable(self.start)

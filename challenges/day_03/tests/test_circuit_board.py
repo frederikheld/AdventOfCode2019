@@ -96,8 +96,8 @@ def test_get_closest_intersection():
 
 # def test_get_closest_intersection_along_cables():
 #     cf1 = CircuitBoard(circuit_1['raw'], circuit_1['start'])
-#     assert cf1.getClosestIntersectionAlongCables(
-#     ) == circuit_1['closest_intersection_along_cables']
+    # assert cf1.getClosestIntersectionAlongCables(
+    # ) == circuit_1['closest_intersection_along_cables']
 
     # cf4 = CircuitBoard(circuit_4['raw'], circuit_4['start'])
     # assert cf4.getClosestIntersectionAlongCables(

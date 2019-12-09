@@ -46,3 +46,8 @@ cable_1['intersections'] = [
     [0, 0],
     [3, 1]
 ]
+
+cable_1['distance_along_cable'] = [
+    0,
+    4
+]
