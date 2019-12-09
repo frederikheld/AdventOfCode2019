@@ -1,11 +1,14 @@
+import sys
 import os
 
-if __name__ == "__main__":
-    from lib.calculate_fuel import calculate_total_fuel_from_list
-    from lib.calculate_fuel_compounded import calculate_fuel_from_mass_compounded
-else:
-    from challenges.day_01.lib.calculate_fuel import calculate_total_fuel_from_list
-    from challenges.day_01.lib.calculate_fuel_compounded import calculate_fuel_from_mass_compounded
+sys.path.append(os.path.join(os.path.dirname(
+    os.path.dirname(sys.path[0]))))
+
+try:
+    from lib.calculate_fuel.calculate_fuel import calculate_total_fuel_from_list
+    from lib.calculate_fuel.calculate_fuel_compounded import calculate_fuel_from_mass_compounded
+except:
+    raise
 
 
 def day_01_challenge_02():

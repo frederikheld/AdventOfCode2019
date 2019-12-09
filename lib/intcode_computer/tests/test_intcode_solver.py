@@ -1,9 +1,8 @@
 import pytest
-import os
 
-from challenges.day_02.lib.intcode_converter import intcode_to_list
-from challenges.day_02.lib.intcode_solver import solve_intcode
-from challenges.day_02.lib.intcode_processor import process_intcode
+from lib.intcode_computer.intcode_converter import intcode_to_list
+from lib.intcode_computer.intcode_solver import solve_intcode
+from lib.intcode_computer.intcode_processor import process_intcode
 
 
 def test_intcode_solver():

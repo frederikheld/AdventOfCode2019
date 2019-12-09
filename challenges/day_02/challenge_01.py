@@ -1,13 +1,15 @@
+import sys
 import os
 
-if __name__ == "__main__":
-    from lib.intcode_converter import intcode_to_list
-    from lib.intcode_converter import list_to_intcode
-    from lib.intcode_processor import process_intcode
-else:
-    from challenges.day_02.lib.intcode_converter import intcode_to_list
-    from challenges.day_02.lib.intcode_converter import list_to_intcode
-    from challenges.day_02.lib.intcode_processor import process_intcode
+sys.path.append(os.path.join(os.path.dirname(
+    os.path.dirname(sys.path[0]))))
+
+try:
+    from lib.intcode_computer.intcode_converter import intcode_to_list
+    from lib.intcode_computer.intcode_converter import list_to_intcode
+    from lib.intcode_computer.intcode_processor import process_intcode
+except:
+    raise
 
 
 def day_02_challenge_01():

@@ -1,7 +1,7 @@
 import pytest
 import os
 
-from challenges.day_01.lib.calculate_fuel import *
+from lib.calculate_fuel.calculate_fuel import *
 
 
 def test_calculate_fuel_from_mass():
