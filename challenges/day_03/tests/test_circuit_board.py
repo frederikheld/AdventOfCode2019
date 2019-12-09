@@ -94,15 +94,29 @@ def test_get_closest_intersection():
     ) == circuit_aoc_1['closest_intersection']
 
 
-# def test_get_closest_intersection_along_cables():
-#     cf1 = CircuitBoard(circuit_1['raw'], circuit_1['start'])
-    # assert cf1.getClosestIntersectionAlongCables(
-    # ) == circuit_1['closest_intersection_along_cables']
+def test_get_closest_intersection_along_cables():
+    cf1 = CircuitBoard(circuit_1['raw'], circuit_1['start'])
+    assert cf1.getClosestIntersectionAlongCables(
+    ) == circuit_1['closest_intersection_along_cables']
 
-    # cf4 = CircuitBoard(circuit_4['raw'], circuit_4['start'])
-    # assert cf4.getClosestIntersectionAlongCables(
-    # ) == circuit_4['closest_intersection_along_cables']
+    cf4 = CircuitBoard(circuit_4['raw'], circuit_4['start'])
+    assert cf4.getClosestIntersectionAlongCables(
+    ) == circuit_4['closest_intersection_along_cables']
 
-    # cfaoc1 = CircuitBoard(circuit_aoc_1['raw'], circuit_aoc_1['start'])
-    # assert cfaoc1.getClosestIntersectionAlongCables(
-    # ) == circuit_aoc_1['closest_intersection_along_cables']
+    cfaoc1 = CircuitBoard(circuit_aoc_1['raw'], circuit_aoc_1['start'])
+    assert cfaoc1.getClosestIntersectionAlongCables(
+    ) == circuit_aoc_1['closest_intersection_along_cables']
+
+    cfaoc2_raw = """ \
+R75,D30,R83,U83,L12,D49,R71,U7,L72
+U62,R66,U55,R34,D71,R55,D58,R83
+"""
+    cfaoc2 = CircuitBoard(cfaoc2_raw, [1, 1])
+    assert cfaoc2.getClosestIntersectionAlongCables()[1] == 610
+
+    cfaoc3_raw = """ \
+R98,U47,R26,D63,R33,U87,L62,D20,R33,U53,R51
+U98,R91,D20,R16,D67,R40,U7,R15,U6,R7
+"""
+    cfaoc3 = CircuitBoard(cfaoc3_raw, [1, 1])
+    assert cfaoc3.getClosestIntersectionAlongCables()[1] == 410

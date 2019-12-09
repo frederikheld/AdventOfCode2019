@@ -80,9 +80,6 @@ class Cable:
         Returns None if point is not on cable.
         """
 
-        print("start: " + str(self.start) + " -> point: " + str(point))
-        print(self.list)
-
         pointer_x = self.start[0]
         pointer_y = self.start[1]
 

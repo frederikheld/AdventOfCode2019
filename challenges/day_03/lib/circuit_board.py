@@ -86,16 +86,23 @@ class CircuitBoard:
 
         return closest_intersection
 
-    # def getClosestIntersectionAlongCables(self):
-    #     closest_intersection = None
-    #     lowest_distance = None
+    def getClosestIntersectionAlongCables(self):
+        closest_intersection = None
+        lowest_distance = None
 
-    #     for intersection in self.getIntersections():
-    #         print(intersection['coordinates'])
-    #         print(intersection['cable_1'].getList())
+        for intersection in self.getIntersections():
 
-        # for intersection in self.getIntersections():
-        #     calculated_distance_along_cable = math_cable.calculate_distance_along_cable(self.start)
+            calculated_distance_along_cables = intersection['cable_1'].getDistanceAlongCable(
+                intersection['coordinates']) + intersection['cable_2'].getDistanceAlongCable(intersection['coordinates'])
+
+            if lowest_distance == None or calculated_distance_along_cables < lowest_distance:
+                lowest_distance = calculated_distance_along_cables
+                closest_intersection = [
+                    intersection['coordinates'],
+                    calculated_distance_along_cables
+                ]
+
+        return closest_intersection
 
     """
     Functions that calculate different representations of the
