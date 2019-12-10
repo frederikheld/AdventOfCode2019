@@ -1,5 +1,5 @@
 from .cable import Cable
-from . import math_geometry
+from ..geometry import geometry
 
 
 class CircuitBoard:
@@ -74,7 +74,7 @@ class CircuitBoard:
 
         for intersection in self.getIntersections():
 
-            calculated_manhattan_distance = math_geometry.calculate_manhattan_distance(
+            calculated_manhattan_distance = geometry.calculate_manhattan_distance(
                 self.start, intersection['coordinates'])
 
             if lowest_distance == None or calculated_manhattan_distance < lowest_distance:

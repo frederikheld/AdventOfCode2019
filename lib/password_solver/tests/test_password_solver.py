@@ -1,7 +1,7 @@
 import pytest
 
 # import object under test:
-from challenges.day_04.lib.password_solver import *
+from lib.password_solver.password_solver import *
 
 
 def test_password_solver():
@@ -17,9 +17,8 @@ def test_password_solver_no_large_groups():
     assert password_solver(123488, 123566, False) == [
         123488, 123499, 123556, 123557, 123558, 123559, 123566]
 
-    # print(password_solver(122888, 123360))
-    # assert password_solver(122888, 123360, False) == [
-    #     122888, 122889, 122899, 122999, 123344, 123345, 123346, 123347, 123348, 123349, 123355, 123356, 123357, 123358, 123359]
+    assert password_solver(122888, 123360, False) == [
+        122888, 122889, 122899, 122999, 123344, 123345, 123346, 123347, 123348, 123349, 123355, 123356, 123357, 123358, 123359]
 
 
 def test_check_six_digits():

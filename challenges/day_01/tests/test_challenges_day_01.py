@@ -1,5 +1,4 @@
 import pytest
-import os
 
 from challenges.day_01.challenge_01 import day_01_challenge_01
 from challenges.day_01.challenge_02 import day_01_challenge_02

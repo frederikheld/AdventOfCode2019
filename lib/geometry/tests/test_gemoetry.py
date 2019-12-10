@@ -1,7 +1,7 @@
 import pytest
 
 # import object under test:
-from challenges.day_03.lib.math_geometry import *
+from lib.geometry.geometry import *
 
 """
 intersect_two_lines(line1, line2)

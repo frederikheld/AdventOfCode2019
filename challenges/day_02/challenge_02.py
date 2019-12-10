@@ -1,9 +1,13 @@
+import sys
 import os
 
-if __name__ == "__main__":
-    from lib.intcode_solver import solve_intcode
-else:
-    from challenges.day_02.lib.intcode_solver import solve_intcode
+sys.path.append(os.path.join(os.path.dirname(
+    os.path.dirname(sys.path[0]))))
+
+try:
+    from lib.intcode_computer.intcode_solver import solve_intcode
+except:
+    raise
 
 
 def day_02_challenge_02():
