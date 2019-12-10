@@ -1,7 +1,7 @@
 import pytest
 
 # import object under test:
-from challenges.day_03.lib.cable import *
+from lib.circuit_solver.cable import *
 
 # import test fixtures:
 from challenges.day_03.tests.fixtures.circuit_board.cable_1 import *

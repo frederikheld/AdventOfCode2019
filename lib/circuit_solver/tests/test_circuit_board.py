@@ -1,8 +1,8 @@
 import pytest
 
 # import object under test:
-from challenges.day_03.lib.circuit_board import *
-from challenges.day_03.lib.cable import *
+from lib.circuit_solver.circuit_board import *
+from lib.circuit_solver.cable import *
 
 # import test fixtures:
 from challenges.day_03.tests.fixtures.circuit_board.circuit_1 import circuit_1

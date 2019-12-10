@@ -1,5 +1,3 @@
-import os
-
 from challenges.day_02.challenge_01 import day_02_challenge_01
 from challenges.day_02.challenge_02 import day_02_challenge_02
 

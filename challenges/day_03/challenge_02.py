@@ -1,9 +1,13 @@
+import sys
 import os
 
-if __name__ == "__main__":
-    from lib.circuit_board import CircuitBoard
-else:
-    from challenges.day_03.lib.circuit_board import CircuitBoard
+sys.path.append(os.path.join(os.path.dirname(
+    os.path.dirname(sys.path[0]))))
+
+try:
+    from lib.circuit_solver.circuit_board import CircuitBoard
+except:
+    raise
 
 
 def day_03_challenge_02():
