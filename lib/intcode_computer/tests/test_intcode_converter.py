@@ -21,3 +21,52 @@ def test_intcode_to_list():
 def test_list_to_intcode():
     assert list_to_intcode(['0', '1', '5']) == "0,1,5"
     assert list_to_intcode(['10', '5', '8']) == "10,5,8"
+
+
+def test_instruction_to_opcode_and_parameters():
+    """
+    ABCDE
+     1002
+
+    DE: two-digit opcode        02 -> 2
+    C:  mode of 1st parameter    0 -> 0
+    B:  mode of 2nd parameter    1 -> 1
+    A:  mode of 3rd parameter      -> 0
+
+    Parameter modes are optional and default to 0.
+    """
+
+    assert instruction_to_opcode_and_parameters(31002) == {
+        'opcode': 2,
+        'parameter_1': 0,
+        'parameter_2': 1,
+        'parameter_3': 3
+    }
+
+    assert instruction_to_opcode_and_parameters(1002) == {
+        'opcode': 2,
+        'parameter_1': 0,
+        'parameter_2': 1,
+        'parameter_3': 0
+    }
+
+    assert instruction_to_opcode_and_parameters(102) == {
+        'opcode': 2,
+        'parameter_1': 1,
+        'parameter_2': 0,
+        'parameter_3': 0
+    }
+
+    assert instruction_to_opcode_and_parameters('02') == {
+        'opcode': 2,
+        'parameter_1': 0,
+        'parameter_2': 0,
+        'parameter_3': 0
+    }
+
+    assert instruction_to_opcode_and_parameters('1') == {
+        'opcode': 1,
+        'parameter_1': 0,
+        'parameter_2': 0,
+        'parameter_3': 0
+    }

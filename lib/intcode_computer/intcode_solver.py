@@ -6,6 +6,9 @@ from .intcode_processor import process_intcode
 
 
 def solve_intcode(intcode, expected_output):
+    """
+    Solves the puzzle
+    """
 
     intcode = intcode_to_list(intcode)
 

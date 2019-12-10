@@ -1,6 +1,6 @@
 import operator
 
-from .intcode_converter import intcode_to_list
+from .intcode_converter import intcode_to_list, instruction_to_opcode_and_parameters
 from .intcode_converter import list_to_intcode
 
 
@@ -12,16 +12,23 @@ def process_intcode(intcode):
 
     while True:
 
-        if intcode[instruction_pointer] == 1:  # opcode 'add'
+        instruction = instruction_to_opcode_and_parameters(
+            intcode[instruction_pointer])
+
+        if instruction['opcode'] == 1:  # opcode 'add'
             operation = operator.add
             instruction_length = 4
 
-        elif intcode[instruction_pointer] == 2:  # opcode 'multiply'
+        elif instruction['opcode'] == 2:  # opcode 'multiply'
             operation = operator.mul
             instruction_length = 4
 
-        elif intcode[instruction_pointer] == 99:  # opcode 'halt'
+        elif instruction['opcode'] == 99:  # opcode 'halt'
             return list_to_intcode(intcode)
+
+        else:
+            raise ValueError(
+                str(instruction['opcode']) + ' is no valid opcode!')
 
         res = operation(
             intcode[intcode[instruction_pointer + 1]],
