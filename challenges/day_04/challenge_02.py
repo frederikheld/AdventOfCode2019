@@ -1,7 +1,13 @@
-if __name__ == "__main__":
-    from lib.password_solver import password_solver
-else:
-    from challenges.day_04.lib.password_solver import password_solver
+import sys
+import os
+
+sys.path.append(os.path.join(os.path.dirname(
+    os.path.dirname(sys.path[0]))))
+
+try:
+    from lib.password_solver.password_solver import password_solver
+except:
+    raise
 
 
 def day_04_challenge_02():
