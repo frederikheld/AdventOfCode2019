@@ -4,10 +4,10 @@ import os
 sys.path.append(os.path.join(os.path.dirname(
     os.path.dirname(sys.path[0]))))
 
-try:
-    from lib.mylib.myfunction import myfunction
-except:
-    raise
+# try:
+#     from lib.mylib.myfunction import myfunction
+# except:
+#     raise
 
 
 def day_template_challenge_01():
@@ -16,7 +16,8 @@ def day_template_challenge_01():
         '/input/challenge_01.txt', 'r'
     )
 
-    result = myfunction(f.read())
+    # result = myfunction(f.read())
+    result = 'foo'
 
     return result  # result to be submitted to adventofcode.com
 
