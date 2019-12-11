@@ -16,10 +16,11 @@ jobs:
     # - name: Install dependencies
     #   run: |
     #     pip install pipenv
-    - uses: VaultVulp/action-pipenv@v1.0.0
-      args: |
+    - name: Install pipenv
+      uses: dschep/install-pipenv-action@v1
+    - name: Install dependencies
+      run: |
         pipenv install --dev --ignore-pipfile
-        pipenv shell
     - name: Test with pytest
       run: |
-        pytest
+        pipenv run pytest
