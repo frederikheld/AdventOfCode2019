@@ -14,6 +14,7 @@ jobs:
       with:
         python-version: 3.7
     - name: Install environment
+      uses: VaultVulp/action-pipenv@v1.0.
       run: |
         pipenv install --dev --ignore-pipfile
         pipenv shell
