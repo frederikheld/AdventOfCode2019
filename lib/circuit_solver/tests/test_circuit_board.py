@@ -5,12 +5,12 @@ from lib.circuit_solver.circuit_board import *
 from lib.circuit_solver.cable import *
 
 # import test fixtures:
-from challenges.day_03.tests.fixtures.circuit_board.circuit_1 import circuit_1
-from challenges.day_03.tests.fixtures.circuit_board.circuit_2 import circuit_2
-from challenges.day_03.tests.fixtures.circuit_board.circuit_3 import circuit_3
-from challenges.day_03.tests.fixtures.circuit_board.circuit_4 import circuit_4
-from challenges.day_03.tests.fixtures.circuit_board.circuit_5 import circuit_5
-from challenges.day_03.tests.fixtures.circuit_board.circuit_aoc_1 import circuit_aoc_1
+from fixtures.circuit_board.circuit_1 import circuit_1
+from fixtures.circuit_board.circuit_2 import circuit_2
+from fixtures.circuit_board.circuit_3 import circuit_3
+from fixtures.circuit_board.circuit_4 import circuit_4
+from fixtures.circuit_board.circuit_5 import circuit_5
+from fixtures.circuit_board.circuit_aoc_1 import circuit_aoc_1
 
 
 def test_object_instantiation():

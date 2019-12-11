@@ -4,9 +4,9 @@ import pytest
 from lib.circuit_solver.cable import *
 
 # import test fixtures:
-from challenges.day_03.tests.fixtures.circuit_board.cable_1 import *
-from challenges.day_03.tests.fixtures.circuit_board.cable_2 import *
-from challenges.day_03.tests.fixtures.circuit_board.cable_3 import *
+from fixtures.circuit_board.cable_1 import *
+from fixtures.circuit_board.cable_2 import *
+from fixtures.circuit_board.cable_3 import *
 
 
 def test_object_instantiation():
