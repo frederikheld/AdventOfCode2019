@@ -17,8 +17,7 @@ jobs:
     #   run: |
     #     pip install pipenv
     - uses: VaultVulp/action-pipenv@v1.0.0
-    - name: Install environment
-      run: |
+      args: |
         pipenv install --dev --ignore-pipfile
         pipenv shell
     - name: Test with pytest
