@@ -25,10 +25,13 @@ class ListNode:
     List Traversing
     """
 
-    def getList(self):
+    def getList(self, reversed=False):
         list = []
         list.append(self.value)
         if self.prev:
             list += self.prev.getList()
+
+        if reversed:
+            list.reverse()
 
         return list

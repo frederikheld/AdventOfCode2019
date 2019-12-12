@@ -29,3 +29,11 @@ def test_listnode_getlist():
     lnode3 = ListNode('Sparta!', lnode2)
 
     assert lnode3.getList() == ['Sparta!', 'is', 'This']
+
+
+def test_listnode_getlist_reversed():
+    lnode1 = ListNode('This')
+    lnode2 = ListNode('is', lnode1)
+    lnode3 = ListNode('Sparta!', lnode2)
+
+    assert lnode3.getList(True) == ['This', 'is', 'Sparta!']
