@@ -37,3 +37,34 @@ def test_listnode_getlist_reversed():
     lnode3 = ListNode('Sparta!', lnode2)
 
     assert lnode3.getList(True) == ['This', 'is', 'Sparta!']
+
+
+def test_listnode_getlist_multiple():
+    """
+            G - H       J - K - L
+           /           /
+    COM - B - C - D - E - F
+                   \
+                    I
+    """
+
+    COM = ListNode('COM')
+    B = ListNode('B', COM)
+    C = ListNode('C', B)
+    D = ListNode('D', C)
+    E = ListNode('E', D)
+    F = ListNode('F', E)
+
+    G = ListNode('G', B)
+    H = ListNode('H', G)
+
+    I = ListNode('I', D)
+
+    J = ListNode('J', E)
+    K = ListNode('K', J)
+    L = ListNode('L', K)
+
+    assert F.getList() == ['F', 'E', 'D', 'C', 'B', 'COM']
+    assert H.getList() == ['H', 'G', 'B', 'COM']
+    assert I.getList() == ['I', 'D', 'C', 'B', 'COM']
+    assert L.getList() == ['L', 'K', 'J', 'E', 'D', 'C', 'B', 'COM']
