@@ -1,12 +1,13 @@
 import pytest
 
-from lib.planet.planet import Planet
+from lib.universal_orbit_map.planet import Planet
 
 
 def test_planet_init():
     planet = Planet('COM')
     assert isinstance(planet, Planet)
     assert planet.getName() == 'COM'
+    assert planet.getCode() == None
     assert planet.getInOrbit() == []
 
 

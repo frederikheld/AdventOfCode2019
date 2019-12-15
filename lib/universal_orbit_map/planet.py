@@ -1,8 +1,11 @@
 class Planet:
 
-    def __init__(self, name=None):
+    def __init__(self, name=None, code=None):
         self.name = name
+        self.code = code
+
         self.orbit = []
+        self.orbits_list = None
 
     """
     Simple Getters
@@ -10,6 +13,12 @@ class Planet:
 
     def getName(self):
         return self.name
+
+    def getCode(self):
+        return self.code
+
+    def getOrbitsList(self):
+        return self.orbits_list
 
     def getInOrbit(self):
         return self.orbit
