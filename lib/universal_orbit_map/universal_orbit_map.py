@@ -6,6 +6,7 @@ class UniversalOrbitMap:
 
         # init representations of this uom:
         self.list = self.initList()
+        self.orbits = self.initOrbits()
 
     """
     Simple Getters
@@ -16,6 +17,9 @@ class UniversalOrbitMap:
 
     def getList(self):
         return self.list
+
+    def getOrbits(self):
+        return self.orbits
 
     def getUniversalCenterOfMass(self):
         return self.universal_center_of_mass
@@ -35,14 +39,21 @@ class UniversalOrbitMap:
         Each cable is a list of the corresponding raw commands.
         """
 
-        orbits = {}
+        orbits_list = {}
 
         for line in self.code.splitlines():
             orbit_definition = line.replace(" ", "").split(')')
 
-            if orbit_definition[0] in orbits.keys():
-                orbits[orbit_definition[0]].append(orbit_definition[1])
+            if orbit_definition[0] in orbits_list.keys():
+                orbits_list[orbit_definition[0]].append(orbit_definition[1])
             else:
-                orbits[orbit_definition[0]] = [orbit_definition[1]]
+                orbits_list[orbit_definition[0]] = [orbit_definition[1]]
 
-        return orbits
+        return orbits_list
+
+    def initOrbits(self):
+        """
+        Has to be called after self.initList()!
+        """
+
+        # orbits

@@ -4,122 +4,127 @@ from lib.universal_orbit_map.planet import Planet
 
 
 def test_planet_init():
-    planet = Planet('COM')
-    assert isinstance(planet, Planet)
-    assert planet.getName() == 'COM'
+    planet = Planet('foo')
+
+    assert planet.getName() == 'foo'
     assert planet.getCode() == None
-    assert planet.getInOrbit() == []
+    assert planet.getPlanetsInOwnOrbit() == []
+    assert planet.getInOrbitOf() == None
+
+    planet2 = Planet('bar', 'ABC)DEF')
+
+    assert planet2.getCode() == 'ABC)DEF'
+    assert planet2.getName() == 'bar'
+    assert planet2.getPlanetsInOwnOrbit() == []
+    assert planet2.getInOrbitOf() == None
 
 
-def test_planet_putinorbit():
-    COM = Planet('COM')
-    A = Planet('A')
-    COM.putInOrbit(A)
-
-    assert COM.getInOrbit() == [A]
-
-    B = Planet('B')
-    COM.putInOrbit(B)
-
-    assert COM.getInOrbit() == [A, B]
-
-
-def test_planet_putinorbit_cascaded():
+def test_putinorbitof():
     """
-            C
-           /
-    COM - A - B
+    Planet can put itself in orbit of one other planet
     """
-    COM = Planet('COM')
-    A = Planet('A')
-    B = Planet('B')
-    C = Planet('C')
+    planet = Planet('planet')
 
-    COM.putInOrbit(A)
-    A.putInOrbit(B)
-    A.putInOrbit(C)
+    the_other_planet = Planet('the other planet')
+    planet.putInOrbitOf(the_other_planet)
 
-    assert COM.getInOrbit() == [A]
-    assert A.getInOrbit() == [B, C]
+    assert planet.getInOrbitOf() == the_other_planet
+
+    another_planet = Planet('another planet')
+    planet.putInOrbitOf(another_planet)
+
+    assert planet.getInOrbitOf() == another_planet
 
 
-def test_planet_gettotalnumberoforbits():
+def test_putinownorbit():
     """
-            C
-           /
-    COM - A - B
-    """
-    COM1 = Planet('COM')
-    A1 = Planet('A')
-    B1 = Planet('B')
-    C1 = Planet('C')
-
-    COM1.putInOrbit(A1)
-    A1.putInOrbit(B1)
-    A1.putInOrbit(C1)
-
-    assert COM1.getTotalNumberOfOrbits() == 5
-
-    """
-    COM - B - C - D
+    Planet can put multiple planets in its own orbit
     """
 
-    COM2 = Planet('COM')
-    B2 = Planet('B')
-    C2 = Planet('C')
-    D2 = Planet('D')
+    planet = Planet('planet')
+    planet2 = Planet('planet 2')
+    planet3 = Planet('planet 3')
+    planet4 = Planet('planet 4')
 
-    COM2.putInOrbit(B2)
-    B2.putInOrbit(C2)
-    C2.putInOrbit(D2)
+    assert planet.getPlanetsInOwnOrbit() == []
 
-    assert COM2.getTotalNumberOfOrbits() == 6
+    planet.putInOwnOrbit(planet2)
+    assert planet.getPlanetsInOwnOrbit() == [planet2]
 
+    planet.putInOwnOrbit(planet3)
+    assert planet.getPlanetsInOwnOrbit() == [planet2, planet3]
+
+    planet.putInOwnOrbit(planet4)
+    assert planet.getPlanetsInOwnOrbit() == [planet2, planet3, planet4]
+
+
+def test_putinorbitof_linksinbothdirections():
     """
-    COM
+    If Planet B is put in orbit of Planet A, Planet A will be put as
+    isInOrbitOf of Planet B.
     """
 
-    COM3 = Planet('COM')
+    planetA = Planet('A')
+    planetB = Planet('B')
 
-    assert COM3.getTotalNumberOfOrbits() == 0
+    assert planetA.getPlanetsInOwnOrbit() == []
+    assert planetB.getInOrbitOf() == None
 
-    # """
-    #         G - H       J - K - L
-    #        /           /
-    # COM - B - C - D - E - F
-    #                \
-    #                 I
-    # """
+    planetA.putInOwnOrbit(planetB)
 
-    COM = Planet('COM')
-    B = Planet('B')
-    C = Planet('C')
-    D = Planet('D')
-    E = Planet('E')
-    F = Planet('F')
+    assert planetA.getPlanetsInOwnOrbit() == [planetB]
+    assert planetB.getInOrbitOf() == planetA
 
-    COM.putInOrbit(B)
-    B.putInOrbit(C)
-    C.putInOrbit(D)
-    D.putInOrbit(E)
-    E.putInOrbit(F)
 
-    G = Planet('G')
-    H = Planet('H')
+def test_putinownorbit_linksinbothdirections():
+    """
+    If Planet B is set as putInOrbitOf() of Planet A,
+    Planet A will putInOwnOrbit() Planet B.
+    """
 
-    B.putInOrbit(G)
-    G.putInOrbit(H)
+    planetA = Planet('A')
+    planetB = Planet('B')
 
-    I = Planet('I')
+    assert planetA.getPlanetsInOwnOrbit() == []
+    assert planetB.getInOrbitOf() == None
 
-    D.putInOrbit(I)
+    planetB.putInOrbitOf(planetA)
 
-    J = Planet('J')
-    K = Planet('K')
-    L = Planet('L')
+    assert planetA.getPlanetsInOwnOrbit() == [planetB]
+    assert planetB.getInOrbitOf() == planetA
 
-    E.putInOrbit(J)
-    J.putInOrbit(K)
-    K.putInOrbit(L)
 
-    assert COM.getTotalNumberOfOrbits() == 42
+def test_convertcodetodict():
+
+    code = """ \
+ABC)DEF
+DEF)GHI
+ABC)123
+"""
+
+    expected_result = {
+        'ABC': ['DEF', '123'],
+        'DEF': ['GHI']
+    }
+
+    planet = Planet('ABC', code)
+    result = planet.convertCodeToDict()
+
+    assert result == expected_result
+
+
+def test_initorbitsfromcode():
+
+    code = """ \
+ABC)DEF
+DEF)GHI
+ABC)123
+"""
+
+    planet = Planet('ABC', code)
+
+    # assert planet.getPlanetsInOwnOrbit()[0].getName() == 'DEF'
+    # assert planet.getPlanetsInOwnOrbit()[1].getName() == '123'
+
+    # assert planet.getPlanetsInOwnOrbit()[1].getPlanetsInOwnOrbit()[
+    #     0].getName() == 'GHI'

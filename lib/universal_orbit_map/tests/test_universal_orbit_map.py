@@ -46,3 +46,12 @@ def test_universal_orbit_map_initlist():
     orbits = uom.initList()
 
     assert orbits == list2
+
+
+def test_universal_orbit_map_initorbits():
+    uom = UniversalOrbitMap(code1, 'COM')
+
+    orbits = uom.getOrbits()
+
+    assert orbits.getName() == 'COM'
+    assert orbits.getInOrbit()[0].getName() == 'B'
