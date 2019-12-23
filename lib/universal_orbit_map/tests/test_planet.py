@@ -137,21 +137,23 @@ def test_initorbitsfromdict():
     assert len(planet.getPlanetsInOwnOrbit()[1].getPlanetsInOwnOrbit()) == 0
 
 
-# def test_initorbitsfromcode():
+def test_initorbitsfromcode():
 
-#     code = """ \
-# ABC)DEF
-# DEF)GHI
-# ABC)123
-# """
+    code = """ \
+ABC)DEF
+DEF)GHI
+ABC)123
+"""
 
-#     planet = Planet('ABC')
-#     planet.initOrbitsFromCode(code)
+    planet = Planet('ABC')
+    planet.initOrbitsFromCode(code)
 
-#     print(planet.getPlanetsInOwnOrbit())
+    assert len(planet.getPlanetsInOwnOrbit()) == 2
+    assert planet.getPlanetsInOwnOrbit()[0].getName() == 'DEF'
+    assert planet.getPlanetsInOwnOrbit()[1].getName() == '123'
 
-#     assert planet.getPlanetsInOwnOrbit()[0].getName() == 'DEF'
-#     assert planet.getPlanetsInOwnOrbit()[1].getName() == '123'
+    assert len(planet.getPlanetsInOwnOrbit()[0].getPlanetsInOwnOrbit()) == 1
+    assert planet.getPlanetsInOwnOrbit()[0].getPlanetsInOwnOrbit()[
+        0].getName() == 'GHI'
 
-#     assert planet.getPlanetsInOwnOrbit()[1].getPlanetsInOwnOrbit()[
-#         0].getName() == 'GHI'
+    assert len(planet.getPlanetsInOwnOrbit()[1].getPlanetsInOwnOrbit()) == 0

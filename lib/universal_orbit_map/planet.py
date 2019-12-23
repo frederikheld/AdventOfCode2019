@@ -55,7 +55,6 @@ class Planet:
 
     def initOrbitsFromCode(self, code):
         self.orbitsDict = self.convertCodeToDict(code)
-
         self.initOrbitsFromDict()
 
     def initOrbitsFromDict(self):
