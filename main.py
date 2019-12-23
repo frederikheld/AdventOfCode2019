@@ -7,11 +7,15 @@ from challenges.day_03.challenge_02 import day_03_challenge_02
 from challenges.day_04.challenge_01 import day_04_challenge_01
 from challenges.day_04.challenge_02 import day_04_challenge_02
 
+from challenges.day_06.challenge_01 import day_06_challenge_01
+
 challenges = [
     [day_01_challenge_01, day_01_challenge_02],
     [day_02_challenge_01, day_02_challenge_02],
     [day_03_challenge_01, day_03_challenge_02],
-    [day_04_challenge_01, day_04_challenge_02]
+    [day_04_challenge_01, day_04_challenge_02],
+    [],
+    [day_06_challenge_01]
 ]
 
 if __name__ == "__main__":
@@ -19,6 +23,8 @@ if __name__ == "__main__":
     stars_sum = 0
 
     for i, day in enumerate(challenges, 1):
+        if len(day) == 0:
+            print("     ", end="")
         if len(day) == 1:
             print("🌟    ", end="")
             stars_sum += 1
