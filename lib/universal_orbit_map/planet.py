@@ -64,12 +64,12 @@ class Planet:
         print(orbitsDict)
         if orbitsDict:
             for planet_name in orbitsDict[self.name]:
+                new_planet = Planet(planet_name)
+
                 if planet_name in orbitsDict:
-                    new_planet = Planet(planet_name)
                     new_planet.initOrbitsFromDict(orbitsDict)
-                    self.putInOwnOrbit(new_planet)
-                else:
-                    self.putInOwnOrbit(Planet(planet_name))
+
+                self.putInOwnOrbit(new_planet)
 
     """
     Helpers
