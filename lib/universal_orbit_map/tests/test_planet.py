@@ -7,19 +7,13 @@ def test_planet_init():
     planet = Planet('foo')
 
     assert planet.getName() == 'foo'
-    assert planet.getOrbitsDict() == None
     assert planet.getPlanetsInOwnOrbit() == []
     assert planet.getInOrbitOf() == None
 
-    orbitsDict = {
-        'ABC': ['DEF']
-    }
-    planet2 = Planet('ABC', orbitsDict)
+    planet2 = Planet('ABC')
 
-    assert planet2.getOrbitsDict() == orbitsDict
     assert planet2.getName() == 'ABC'
-    assert len(planet2.getPlanetsInOwnOrbit()) == 1
-    assert planet2.getPlanetsInOwnOrbit()[0].getName() == 'DEF'
+    assert len(planet2.getPlanetsInOwnOrbit()) == 0
     assert planet2.getInOrbitOf() == None
 
 
@@ -124,7 +118,8 @@ def test_initorbitsfromdict():
         'DEF': ['GHI']
     }
 
-    planet = Planet('ABC', orbitsDict)
+    planet = Planet('ABC')
+    planet.initOrbitsFromDict(orbitsDict)
 
     assert len(planet.getPlanetsInOwnOrbit()) == 2
     assert planet.getPlanetsInOwnOrbit()[0].getName() == 'DEF'

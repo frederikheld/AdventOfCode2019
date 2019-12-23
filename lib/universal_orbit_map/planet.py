@@ -1,13 +1,9 @@
 class Planet:
 
-    def __init__(self, name, orbitsDict=None):
+    def __init__(self, name):
 
         # has a name:
         self.name = name
-
-        # can have a dictionary that describes the planets
-        # in own orbit:
-        self.orbitsDict = orbitsDict
 
         # can have many planets in orbit:
         self.planetsInOwnOrbit = []
@@ -15,17 +11,12 @@ class Planet:
         # can be in orbit of exactly one planet:
         self.inOrbitOf = None
 
-        self.initOrbitsFromDict()
-
     """
     Getters
     """
 
     def getName(self):
         return self.name
-
-    def getOrbitsDict(self):
-        return self.orbitsDict
 
     def getPlanetsInOwnOrbit(self):
         return self.planetsInOwnOrbit
@@ -54,15 +45,17 @@ class Planet:
     """
 
     def initOrbitsFromCode(self, code):
-        self.orbitsDict = self.convertCodeToDict(code)
-        self.initOrbitsFromDict()
+        orbitsDict = self.convertCodeToDict(code)
+        self.initOrbitsFromDict(orbitsDict)
 
-    def initOrbitsFromDict(self):
-        if self.orbitsDict:
-            for planet_name in self.orbitsDict[self.name]:
-                if planet_name in self.orbitsDict:
-                    self.putInOwnOrbit(
-                        Planet(planet_name, {planet_name: self.orbitsDict[planet_name]}))
+    def initOrbitsFromDict(self, orbitsDict):
+        if orbitsDict:
+            for planet_name in orbitsDict[self.name]:
+                if planet_name in orbitsDict:
+                    new_planet = Planet(planet_name)
+                    new_planet.initOrbitsFromDict(
+                        {planet_name: orbitsDict[planet_name]})
+                    self.putInOwnOrbit(new_planet)
                 else:
                     self.putInOwnOrbit(Planet(planet_name))
 
