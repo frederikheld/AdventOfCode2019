@@ -61,7 +61,6 @@ class Planet:
         self.initOrbitsFromDict(orbitsDict)
 
     def initOrbitsFromDict(self, orbitsDict):
-        print(orbitsDict)
         if orbitsDict:
             for planet_name in orbitsDict[self.name]:
                 new_planet = Planet(planet_name)
