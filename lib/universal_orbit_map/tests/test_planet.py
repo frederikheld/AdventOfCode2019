@@ -152,3 +152,71 @@ ABC)123
         0].getName() == 'GHI'
 
     assert len(planet.getPlanetsInOwnOrbit()[1].getPlanetsInOwnOrbit()) == 0
+
+
+def test_gettotalnumberoforbits():
+    """
+            D
+           /
+    COM - B - C
+    """
+
+    code1 = """ \
+COM)B
+B)C
+B)D
+"""
+    COM1 = Planet('COM')
+    COM1.initOrbitsFromCode(code1)
+
+    assert COM1.getTotalNumberOfOrbits() == 5
+
+    """
+    COM - B - C - D
+    """
+
+    code2 = """ \
+COM)B
+B)C
+C)D
+"""
+
+    COM2 = Planet('COM')
+    COM2.initOrbitsFromCode(code2)
+
+    assert COM2.getTotalNumberOfOrbits() == 6
+
+    """
+    COM
+    """
+
+    COM3 = Planet('COM')
+
+    assert COM3.getTotalNumberOfOrbits() == 0
+
+#     # """
+#     #         G - H       J - K - L
+#     #        /           /
+#     # COM - B - C - D - E - F
+#     #                \
+#     #                 I
+#     # """
+
+    code4 = """ \
+COM)B
+B)C
+B)G
+G)H
+C)D
+D)E
+D)I
+E)F
+E)J
+J)K
+K)L
+"""
+
+    COM4 = Planet('COM')
+    COM4.initOrbitsFromCode(code4)
+
+    assert COM4.getTotalNumberOfOrbits() == 42

@@ -25,6 +25,18 @@ class Planet:
         return self.inOrbitOf
 
     """
+    Advanced Getters
+    """
+
+    def getTotalNumberOfOrbits(self, count=0):
+        total_number_of_orbits = count
+        for planet in self.planetsInOwnOrbit:
+            total_number_of_orbits += planet.getTotalNumberOfOrbits(
+                count+1)
+
+        return total_number_of_orbits
+
+    """
     Simple Setters
     """
 
@@ -49,12 +61,12 @@ class Planet:
         self.initOrbitsFromDict(orbitsDict)
 
     def initOrbitsFromDict(self, orbitsDict):
+        print(orbitsDict)
         if orbitsDict:
             for planet_name in orbitsDict[self.name]:
                 if planet_name in orbitsDict:
                     new_planet = Planet(planet_name)
-                    new_planet.initOrbitsFromDict(
-                        {planet_name: orbitsDict[planet_name]})
+                    new_planet.initOrbitsFromDict(orbitsDict)
                     self.putInOwnOrbit(new_planet)
                 else:
                     self.putInOwnOrbit(Planet(planet_name))
@@ -69,8 +81,6 @@ class Planet:
 
         for orbit in code.splitlines():
             pair = orbit.replace(" ", "").split(")")
-
-            print(pair)
 
             if pair[0] not in orbitsList:
                 orbitsList[pair[0]] = []
