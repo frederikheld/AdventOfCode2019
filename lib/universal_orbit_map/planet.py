@@ -1,19 +1,21 @@
 class Planet:
 
-    def __init__(self, name, code=None):
+    def __init__(self, name, orbitsDict=None):
 
         # has a name:
         self.name = name
 
-        # can have code that describes the map of this planet
-        # in relation to the planets in its orbit:
-        self.code = code
+        # can have a dictionary that describes the planets
+        # in own orbit:
+        self.orbitsDict = orbitsDict
 
         # can have many planets in orbit:
         self.planetsInOwnOrbit = []
 
         # can be in orbit of exactly one planet:
         self.inOrbitOf = None
+
+        self.initOrbitsFromDict()
 
     """
     Getters
@@ -22,8 +24,8 @@ class Planet:
     def getName(self):
         return self.name
 
-    def getCode(self):
-        return self.code
+    def getOrbitsDict(self):
+        return self.orbitsDict
 
     def getPlanetsInOwnOrbit(self):
         return self.planetsInOwnOrbit
@@ -51,21 +53,29 @@ class Planet:
     map from the given code
     """
 
-    def initOrbitsFromCode(self):
-        orbits = self.__convertCodeToDict()
+    def initOrbitsFromCode(self, code):
+        self.orbitsDict = self.convertCodeToDict(code)
 
-        for planet_name in orbits[self.name]:
-            self.putInOwnOrbit(Planet(planet_name, orbits[planet_name]))
+        self.initOrbitsFromDict()
+
+    def initOrbitsFromDict(self):
+        if self.orbitsDict:
+            for planet_name in self.orbitsDict[self.name]:
+                if planet_name in self.orbitsDict:
+                    self.putInOwnOrbit(
+                        Planet(planet_name, {planet_name: self.orbitsDict[planet_name]}))
+                else:
+                    self.putInOwnOrbit(Planet(planet_name))
 
     """
     Helpers
     """
 
-    def convertCodeToDict(self):
+    def convertCodeToDict(self, code):
 
         orbitsList = {}
 
-        for orbit in self.code.splitlines():
+        for orbit in code.splitlines():
             pair = orbit.replace(" ", "").split(")")
 
             print(pair)

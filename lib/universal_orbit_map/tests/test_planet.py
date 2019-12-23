@@ -7,15 +7,19 @@ def test_planet_init():
     planet = Planet('foo')
 
     assert planet.getName() == 'foo'
-    assert planet.getCode() == None
+    assert planet.getOrbitsDict() == None
     assert planet.getPlanetsInOwnOrbit() == []
     assert planet.getInOrbitOf() == None
 
-    planet2 = Planet('bar', 'ABC)DEF')
+    orbitsDict = {
+        'ABC': ['DEF']
+    }
+    planet2 = Planet('ABC', orbitsDict)
 
-    assert planet2.getCode() == 'ABC)DEF'
-    assert planet2.getName() == 'bar'
-    assert planet2.getPlanetsInOwnOrbit() == []
+    assert planet2.getOrbitsDict() == orbitsDict
+    assert planet2.getName() == 'ABC'
+    assert len(planet2.getPlanetsInOwnOrbit()) == 1
+    assert planet2.getPlanetsInOwnOrbit()[0].getName() == 'DEF'
     assert planet2.getInOrbitOf() == None
 
 
@@ -107,24 +111,47 @@ ABC)123
         'DEF': ['GHI']
     }
 
-    planet = Planet('ABC', code)
-    result = planet.convertCodeToDict()
+    planet = Planet('ABC')
+    result = planet.convertCodeToDict(code)
 
     assert result == expected_result
 
 
-def test_initorbitsfromcode():
+def test_initorbitsfromdict():
 
-    code = """ \
-ABC)DEF
-DEF)GHI
-ABC)123
-"""
+    orbitsDict = {
+        'ABC': ['DEF', '123'],
+        'DEF': ['GHI']
+    }
 
-    planet = Planet('ABC', code)
+    planet = Planet('ABC', orbitsDict)
 
-    # assert planet.getPlanetsInOwnOrbit()[0].getName() == 'DEF'
-    # assert planet.getPlanetsInOwnOrbit()[1].getName() == '123'
+    assert len(planet.getPlanetsInOwnOrbit()) == 2
+    assert planet.getPlanetsInOwnOrbit()[0].getName() == 'DEF'
+    assert planet.getPlanetsInOwnOrbit()[1].getName() == '123'
 
-    # assert planet.getPlanetsInOwnOrbit()[1].getPlanetsInOwnOrbit()[
-    #     0].getName() == 'GHI'
+    assert len(planet.getPlanetsInOwnOrbit()[0].getPlanetsInOwnOrbit()) == 1
+    assert planet.getPlanetsInOwnOrbit()[0].getPlanetsInOwnOrbit()[
+        0].getName() == 'GHI'
+
+    assert len(planet.getPlanetsInOwnOrbit()[1].getPlanetsInOwnOrbit()) == 0
+
+
+# def test_initorbitsfromcode():
+
+#     code = """ \
+# ABC)DEF
+# DEF)GHI
+# ABC)123
+# """
+
+#     planet = Planet('ABC')
+#     planet.initOrbitsFromCode(code)
+
+#     print(planet.getPlanetsInOwnOrbit())
+
+#     assert planet.getPlanetsInOwnOrbit()[0].getName() == 'DEF'
+#     assert planet.getPlanetsInOwnOrbit()[1].getName() == '123'
+
+#     assert planet.getPlanetsInOwnOrbit()[1].getPlanetsInOwnOrbit()[
+#         0].getName() == 'GHI'
